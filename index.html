@@ -3,29 +3,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brochure Interactivo · Davivienda | Dashboard Sostenibilidad</title>
+    <title>Brochure · Davivienda | Dashboard Sostenibilidad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* ------------------------------------------------
-                   ESTILO OSCURO "POWER BI"
-                ------------------------------------------------ */
+        /* ---------- ESTILO OSCURO POWER BI ---------- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
             background: #0b0c10;
-            /* Fondo base oscuro */
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 2rem 1.5rem;
         }
-
-        /* Contenedor principal: simula un panel de Power BI */
         .dashboard {
             max-width: 1300px;
             width: 100%;
@@ -34,10 +28,9 @@
             padding: 2.2rem 2.5rem;
             box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
             border: 1px solid #2a2c3a;
-            transition: all 0.2s;
         }
 
-        /* ---------- TEXTO Y COLORES ---------- */
+        /* ---------- VARIABLES ---------- */
         :root {
             --bg-card: #1e202b;
             --bg-card-hover: #282b39;
@@ -53,18 +46,12 @@
             --purple: #b388ff;
         }
 
-        h1,
-        h2,
-        h3,
-        h4 {
+        h1, h2, h3, h4 {
             color: var(--text-primary);
             font-weight: 600;
             letter-spacing: -0.2px;
         }
-
-        p,
-        li,
-        span {
+        p, li, span {
             color: var(--text-secondary);
             line-height: 1.7;
         }
@@ -103,7 +90,6 @@
             gap: 1.2rem;
             margin-bottom: 2.5rem;
         }
-
         .kpi-card {
             background: var(--bg-card);
             border: 1px solid var(--border-card);
@@ -153,45 +139,18 @@
             opacity: 0.10;
             color: var(--text-primary);
         }
+        .kpi-cyan .kpi-value { color: var(--cyan); }
+        .kpi-cyan .kpi-icon { color: var(--cyan); opacity: 0.15; }
+        .kpi-orange .kpi-value { color: var(--orange); }
+        .kpi-orange .kpi-icon { color: var(--orange); opacity: 0.15; }
+        .kpi-red .kpi-value { color: var(--red); }
+        .kpi-red .kpi-icon { color: var(--red); opacity: 0.15; }
+        .kpi-green .kpi-value { color: var(--green); }
+        .kpi-green .kpi-icon { color: var(--green); opacity: 0.15; }
+        .kpi-gold .kpi-value { color: var(--gold); }
+        .kpi-gold .kpi-icon { color: var(--gold); opacity: 0.15; }
 
-        /* Variantes de color para KPIs */
-        .kpi-cyan .kpi-value {
-            color: var(--cyan);
-        }
-        .kpi-cyan .kpi-icon {
-            color: var(--cyan);
-            opacity: 0.15;
-        }
-        .kpi-orange .kpi-value {
-            color: var(--orange);
-        }
-        .kpi-orange .kpi-icon {
-            color: var(--orange);
-            opacity: 0.15;
-        }
-        .kpi-red .kpi-value {
-            color: var(--red);
-        }
-        .kpi-red .kpi-icon {
-            color: var(--red);
-            opacity: 0.15;
-        }
-        .kpi-green .kpi-value {
-            color: var(--green);
-        }
-        .kpi-green .kpi-icon {
-            color: var(--green);
-            opacity: 0.15;
-        }
-        .kpi-gold .kpi-value {
-            color: var(--gold);
-        }
-        .kpi-gold .kpi-icon {
-            color: var(--gold);
-            opacity: 0.15;
-        }
-
-        /* ---------- TABS (interactividad) ---------- */
+        /* ---------- TABS ---------- */
         .tabs-container {
             margin: 2rem 0 1.5rem 0;
         }
@@ -217,7 +176,7 @@
         }
         .tab-btn:hover {
             color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255,255,255,0.03);
         }
         .tab-btn.active {
             color: var(--cyan);
@@ -232,19 +191,12 @@
         .tab-content.active {
             display: block;
         }
-
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ---------- GRÁFICOS CIRCULARES (CSS) ---------- */
+        /* ---------- GRÁFICOS CSS ---------- */
         .chart-grid {
             display: flex;
             flex-wrap: wrap;
@@ -262,8 +214,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: conic-gradient(var(--cyan) 0% calc(17.8% * 1.8),
-                    var(--border-card) calc(17.8% * 1.8) 100%);
+            background: conic-gradient(var(--cyan) 0% 17.8%, var(--border-card) 17.8% 100%);
             position: relative;
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
         }
@@ -292,7 +243,7 @@
             color: var(--text-primary);
         }
 
-        /* ---------- TARJETAS DE CONTENIDO ---------- */
+        /* ---------- TARJETAS OSCURAS ---------- */
         .card-dark {
             background: var(--bg-card);
             border: 1px solid var(--border-card);
@@ -326,7 +277,7 @@
             filter: brightness(0.85) contrast(1.1);
         }
 
-        /* ---------- CRÍTICO / ALERTAS ---------- */
+        /* ---------- ALERTAS / CRÍTICO ---------- */
         .alert-card {
             background: rgba(255, 82, 82, 0.06);
             border-left: 5px solid var(--red);
@@ -334,23 +285,17 @@
             border-radius: 0 12px 12px 0;
             margin: 1rem 0;
         }
-        .alert-card strong {
-            color: var(--red);
-        }
+        .alert-card strong { color: var(--red); }
         .alert-card.warning {
             border-left-color: var(--orange);
             background: rgba(255, 140, 66, 0.06);
         }
-        .alert-card.warning strong {
-            color: var(--orange);
-        }
+        .alert-card.warning strong { color: var(--orange); }
         .alert-card.info {
             border-left-color: var(--cyan);
             background: rgba(0, 212, 255, 0.05);
         }
-        .alert-card.info strong {
-            color: var(--cyan);
-        }
+        .alert-card.info strong { color: var(--cyan); }
 
         /* ---------- FOOTER ---------- */
         .footer-dark {
@@ -374,18 +319,10 @@
 
         /* ---------- RESPONSIVE ---------- */
         @media (max-width: 900px) {
-            .dashboard {
-                padding: 1.5rem 1.2rem;
-            }
-            .grid-2cols {
-                grid-template-columns: 1fr;
-            }
-            .kpi-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-            .kpi-card .kpi-value {
-                font-size: 1.6rem;
-            }
+            .dashboard { padding: 1.5rem 1.2rem; }
+            .grid-2cols { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+            .kpi-card .kpi-value { font-size: 1.6rem; }
         }
         @media (max-width: 550px) {
             .tabs-header {
@@ -403,378 +340,358 @@
                 background: rgba(0, 212, 255, 0.08);
                 border-bottom: none;
             }
-            .donut {
-                width: 100px;
-                height: 100px;
-            }
-            .donut .hole {
-                width: 64px;
-                height: 64px;
-                font-size: 0.9rem;
-            }
+            .donut { width: 100px; height: 100px; }
+            .donut .hole { width: 64px; height: 64px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
+<div class="dashboard">
 
-    <div class="dashboard">
-
-        <!-- ============================================
-        PORTADA (HEADER DARK)
-        ============================================ -->
-        <header style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; padding-bottom:1rem; border-bottom:1px solid var(--border-card);">
-            <div style="display:flex; align-items:center; gap:1.2rem;">
-                <div style="width:60px; height:60px; background:linear-gradient(135deg, #00d4ff, #0066ff); border-radius:16px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.8rem; color:#fff; box-shadow:0 8px 24px rgba(0,212,255,0.25);">
-                    D
-                </div>
-                <div>
-                    <h1 style="font-size:1.8rem; font-weight:700; letter-spacing:-0.5px;">Davivienda <span style="color:var(--cyan);">·</span> Sostenibilidad</h1>
-                    <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:0.1rem;">
-                        <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fas fa-calendar-alt" style="color:var(--cyan);"></i> Informe Anual 2025</span>
-                        <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fas fa-users" style="color:var(--cyan);"></i> Grupo 302427742_1</span>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align:right; background:var(--bg-card); padding:0.5rem 1.5rem; border-radius:40px; border:1px solid var(--border-card);">
-                <p style="margin:0; font-size:0.8rem; color:var(--text-secondary);">Isis Molina · Josué Avella · Erika Macías</p>
-                <p style="margin:0; font-size:0.7rem; color:var(--text-muted);">Julio 2026</p>
-            </div>
-        </header>
-
-        <!-- ============================================
-        KPIs (MÉTRICAS CLAVE)
-        ============================================ -->
-        <div class="kpi-grid">
-            <div class="kpi-card kpi-cyan">
-                <div class="kpi-label"><i class="fas fa-users" style="margin-right:0.3rem;"></i> Clientes</div>
-                <div class="kpi-value"><span id="counter1">26.1</span><span class="unit">M</span></div>
-                <div class="kpi-trend" style="color:var(--cyan);"><i class="fas fa-arrow-up"></i> +4.2% anual</div>
-                <div class="kpi-icon"><i class="fas fa-user-friends"></i></div>
-            </div>
-            <div class="kpi-card kpi-green">
-                <div class="kpi-label"><i class="fas fa-coins" style="margin-right:0.3rem;"></i> Cartera Sostenible</div>
-                <div class="kpi-value"><span id="counter2">30.6</span><span class="unit">B COP</span></div>
-                <div class="kpi-trend" style="color:var(--green);">17.8% de cartera total</div>
-                <div class="kpi-icon"><i class="fas fa-hand-holding-usd"></i></div>
-            </div>
-            <div class="kpi-card kpi-orange">
-                <div class="kpi-label"><i class="fas fa-phone-alt" style="margin-right:0.3rem;"></i> DaviPlata</div>
-                <div class="kpi-value"><span id="counter3">18.7</span><span class="unit">M</span></div>
-                <div class="kpi-trend" style="color:var(--orange);">Inclusión financiera</div>
-                <div class="kpi-icon"><i class="fas fa-mobile-alt"></i></div>
-            </div>
-            <div class="kpi-card kpi-red">
-                <div class="kpi-label"><i class="fas fa-cloud" style="margin-right:0.3rem;"></i> Huella de Carbono</div>
-                <div class="kpi-value"><span id="counter4">9.6</span><span class="unit">M tCO₂</span></div>
-                <div class="kpi-trend" style="color:var(--red);">Cartera financiada (Scope 3)</div>
-                <div class="kpi-icon"><i class="fas fa-industry"></i></div>
-            </div>
-            <div class="kpi-card kpi-gold">
-                <div class="kpi-label"><i class="fas fa-venus-mars" style="margin-right:0.3rem;"></i> Mujeres en Junta</div>
-                <div class="kpi-value"><span id="counter5">17</span><span class="unit">%</span></div>
-                <div class="kpi-trend" style="color:var(--gold);">Gobierno corporativo</div>
-                <div class="kpi-icon"><i class="fas fa-venus"></i></div>
-            </div>
-        </div>
-
-        <!-- ============================================
-        TABS INTERACTIVOS
-        ============================================ -->
-        <div class="tabs-container">
-            <div class="tabs-header">
-                <button class="tab-btn active" data-tab="tab1"><i class="fas fa-building"></i> Contexto</button>
-                <button class="tab-btn" data-tab="tab2"><i class="fas fa-map-pin"></i> Ubicación</button>
-                <button class="tab-btn" data-tab="tab3"><i class="fas fa-search"></i> Análisis Crítico</button>
-                <button class="tab-btn" data-tab="tab4"><i class="fas fa-chart-pie"></i> Propuestas</button>
-            </div>
-
-            <!-- ===================== TAB 1: CONTEXTO ===================== -->
-            <div id="tab1" class="tab-content active">
-                <div class="grid-2cols">
-                    <div class="card-dark">
-                        <h4 style="color:var(--cyan);"><i class="fas fa-tag"></i> Sector &amp; CIIU</h4>
-                        <p><strong style="color:var(--text-primary);">Servicios Financieros</strong> · Código CIIU <span style="color:var(--cyan);">6412</span> (Bancos Comerciales).</p>
-                        <p style="margin-top:0.5rem;">Presencia en <strong style="color:var(--text-primary);">6 países</strong>: Colombia, Costa Rica, El Salvador, Honduras, Panamá y RD.</p>
-                        <div style="margin-top:0.8rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
-                            <span class="badge-cyan">Respeto</span>
-                            <span class="badge-cyan">Equidad</span>
-                            <span class="badge-cyan">Disciplina</span>
-                            <span class="badge-cyan">Honestidad</span>
-                            <span class="badge-cyan">Entusiasmo</span>
-                        </div>
-                    </div>
-                    <div class="card-dark">
-                        <h4 style="color:var(--cyan);"><i class="fas fa-flag"></i> Misión &amp; Visión</h4>
-                        <p style="font-style:italic; color:var(--text-secondary);">“Generar valor para clientes, comunidad e inversionistas mediante un equipo humano íntegro, comprometido, innovador y orientado al aprendizaje continuo.”</p>
-                        <hr style="border-color:var(--border-card); margin:0.6rem 0;" />
-                        <p style="font-style:italic; color:var(--text-secondary);">“Crecimiento sostenible, innovación y generación de valor para los grupos de interés, consolidando una banca multilatina transparente y confiable.”</p>
-                    </div>
-                </div>
-
-                <!-- Donut gráfico -->
-                <div class="card-dark" style="margin-top:0.5rem;">
-                    <h4 style="color:var(--cyan);"><i class="fas fa-chart-pie"></i> Cartera Sostenible vs. Tradicional</h4>
-                    <div class="chart-grid">
-                        <div class="donut-container">
-                            <div class="donut">
-                                <div class="hole">17.8%</div>
-                            </div>
-                            <div class="donut-label"><strong>Cartera Sostenible</strong> · COP 30.6 B</div>
-                        </div>
-                        <div style="align-self:center; color:var(--text-secondary); font-size:0.95rem; max-width:280px;">
-                            <p><i class="fas fa-circle" style="color:var(--cyan);"></i> <strong style="color:var(--text-primary);">17.8%</strong> alineada con ODS</p>
-                            <p><i class="fas fa-circle" style="color:var(--border-card);"></i> <strong style="color:var(--text-primary);">82.2%</strong> cartera tradicional</p>
-                            <p style="margin-top:0.5rem; font-size:0.85rem; color:var(--text-muted);">Meta: alcanzar el 25% para 2028.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===================== TAB 2: UBICACIÓN ===================== -->
-            <div id="tab2" class="tab-content">
-                <div class="grid-2cols">
-                    <div>
-                        <div class="card-dark">
-                            <h4 style="color:var(--cyan);"><i class="fas fa-location-dot"></i> Sede Principal</h4>
-                            <p><strong style="color:var(--text-primary);">Avenida El Dorado No. 68C-61</strong>, Bogotá, Colombia.</p>
-                            <p style="margin-top:0.3rem;">Oficina corporativa: Carrera 13 No. 26-15.</p>
-                        </div>
-                        <div class="card-dark">
-                            <h4 style="color:var(--cyan);"><i class="fas fa-cloud-sun"></i> Clima &amp; Demografía</h4>
-                            <ul style="padding-left:1.2rem; color:var(--text-secondary);">
-                                <li><strong style="color:var(--text-primary);">Bogotá:</strong> Altitud 2.600 m · Temp. media 14°C · Sabana tropical.</li>
-                                <li><strong style="color:var(--text-primary);">Centroamérica:</strong> Clima tropical, afectado por El Niño y huracanes.</li>
-                                <li><strong style="color:var(--text-primary);">Contexto:</strong> Zonas urbanas de alta densidad, desafíos de inclusión en zonas rurales.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="map-wrapper">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.533238878497!2d-74.10488968423856!3d4.648840543599678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b9a6b4b6b6b%3A0x6b6b6b6b6b6b6b6b!2sAvenida%20El%20Dorado%20%2368C-61%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1650000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Davivienda Bogotá"></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===================== TAB 3: ANÁLISIS CRÍTICO ===================== -->
-            <div id="tab3" class="tab-content">
-                <div style="margin-bottom:1rem; background:rgba(255,255,255,0.02); border-radius:12px; padding:1rem 1.5rem; border:1px dashed var(--border-card);">
-                    <p style="color:var(--text-primary); font-weight:500; font-size:1.05rem;">
-                        <i class="fas fa-quote-left" style="color:var(--orange);"></i> 
-                        No basta con describir buenas prácticas: debemos <span style="color:var(--cyan);">cuestionar, evaluar riesgos y proponer</span> estrategias que fortalezcan la transparencia y la justicia social.
-                    </p>
-                </div>
-
-                <div class="alert-card">
-                    <strong><i class="fas fa-exclamation-triangle"></i> Discurso vs. Inversión real</strong>
-                    <p style="margin-top:0.3rem;">Reconocido en el <strong style="color:var(--text-primary);">Top 10% S&P Global</strong>, pero la <strong style="color:var(--red);">World Benchmarking Alliance</strong> le otorga calificación <strong style="color:var(--red);">“D”</strong> en transición climática. Sus reducciones de emisiones <em>“son incompatibles con una trayectoria ambiciosa de 1.5 °C”</em>.</p>
-                </div>
-
-                <div class="alert-card warning">
-                    <strong><i class="fas fa-hand-holding-usd"></i> Inclusión financiera con límites</strong>
-                    <p style="margin-top:0.3rem;">DaviPlata (18.7M) y microcréditos avanzan, pero persisten <strong style="color:var(--orange);">brechas digitales</strong> en zonas rurales y riesgo de sobreendeudamiento. La <strong style="color:var(--orange);">representación femenina</strong> en la junta es solo del <strong style="color:var(--orange);">17%</strong>.</p>
-                </div>
-
-                <div class="alert-card info">
-                    <strong><i class="fas fa-leaf"></i> Impacto ambiental indirecto</strong>
-                    <p style="margin-top:0.3rem;">Certificado como <strong style="color:var(--cyan);">Carbono Neutro</strong> (operaciones propias), pero su <strong style="color:var(--cyan);">huella de carbono total</strong> (cartera financiada) asciende a <strong style="color:var(--cyan);">9.6 M tCO₂</strong>, sin metas de descarbonización alineadas con el Acuerdo de París para toda la cartera.</p>
-                </div>
-
-                <!-- Gráfico de huella vs inversión -->
-                <div style="background:var(--bg-card); border-radius:16px; padding:1.5rem; border:1px solid var(--border-card); margin-top:0.8rem;">
-                    <h4 style="color:var(--text-primary); font-size:1rem;"><i class="fas fa-chart-bar" style="color:var(--red);"></i> Brecha de inversión climática</h4>
-                    <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; margin-top:0.5rem;">
-                        <div style="flex:1; min-width:140px;">
-                            <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted);"><span>Inversión baja en carbono</span> <span style="color:var(--red);">0.8%</span></div>
-                            <div style="width:100%; height:8px; background:var(--border-card); border-radius:40px; overflow:hidden;">
-                                <div style="width:0.8%; height:100%; background:var(--red); border-radius:40px;"></div>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;"><span>Necesario para 1.5°C</span> <span style="color:var(--cyan);">~30%</span></div>
-                            <div style="width:100%; height:8px; background:var(--border-card); border-radius:40px; overflow:hidden;">
-                                <div style="width:30%; height:100%; background:var(--cyan); border-radius:40px;"></div>
-                            </div>
-                        </div>
-                        <div style="color:var(--text-muted); font-size:0.85rem; max-width:200px;">
-                            <i class="fas fa-arrow-right" style="color:var(--red);"></i> Riesgo reputacional por <strong style="color:var(--red);">greenwashing</strong> si no se establecen metas verificables.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===================== TAB 4: PROPUESTAS ===================== -->
-            <div id="tab4" class="tab-content">
-                <div style="background:rgba(0, 212, 255, 0.04); border-radius:16px; padding:1.8rem; border:1px solid rgba(0,212,255,0.15);">
-                    <h3 style="color:var(--cyan); font-size:1.2rem; margin-bottom:0.8rem;">
-                        <i class="fas fa-lightbulb"></i> Estrategias para fortalecer la transparencia y el impacto
-                    </h3>
-                    <ul style="list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-                        <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--cyan);">
-                            <strong style="color:var(--text-primary);">Indicadores verificables</strong>
-                            <p style="font-size:0.9rem; margin-top:0.2rem;">Publicar métricas de emisiones financiadas (PCAF) con verificación externa anual.</p>
-                        </li>
-                        <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--green);">
-                            <strong style="color:var(--text-primary);">Metas 1.5 °C (SBTi)</strong>
-                            <p style="font-size:0.9rem; margin-top:0.2rem;">Adoptar objetivos de reducción de emisiones para toda la cartera con Science Based Targets.</p>
-                        </li>
-                        <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--orange);">
-                            <strong style="color:var(--text-primary);">Política de exclusión</strong>
-                            <p style="font-size:0.9rem; margin-top:0.2rem;">Definir plazos para la salida progresiva de los sectores más contaminantes.</p>
-                        </li>
-                        <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--gold);">
-                            <strong style="color:var(--text-primary);">Impacto social real</strong>
-                            <p style="font-size:0.9rem; margin-top:0.2rem;">Medir movilidad social, reducción de pobreza y empoderamiento femenino, no solo número de beneficiarios.</p>
-                        </li>
-                        <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--purple); grid-column: span 2;">
-                            <strong style="color:var(--text-primary);">Gobierno corporativo</strong>
-                            <p style="font-size:0.9rem; margin-top:0.2rem;">Establecer metas concretas para aumentar la participación femenina en instancias directivas y crear comités de ética con stakeholders externos.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- ============================================
-        CONCLUSIÓN (DESTACADA)
-        ============================================ -->
-        <div style="background:linear-gradient(145deg, #1a1c2a, #14151c); border-radius:20px; padding:2.2rem 2.5rem; margin-top:1.5rem; border:1px solid var(--border-card); text-align:center;">
-            <h2 style="color:var(--cyan); font-size:1.8rem; font-weight:700; margin-bottom:0.8rem;">
-                <i class="fas fa-file-alt" style="margin-right:0.8rem;"></i>Conclusión
-            </h2>
-            <p style="font-size:1.1rem; max-width:850px; margin:0 auto; color:var(--text-secondary);">
-                Los informes de sostenibilidad de Davivienda son una herramienta valiosa, pero su utilidad administrativa depende de que <span style="color:var(--text-primary); font-weight:600;">trasciendan el discurso</span> y se conviertan en motores de cambio real.
-            </p>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:1rem; margin-top:1.5rem; text-align:left;">
-                <div style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-top:3px solid var(--cyan);">
-                    <i class="fas fa-chart-line" style="color:var(--cyan);"></i>
-                    <h4 style="font-size:0.9rem; margin:0.2rem 0;">Análisis de escenarios</h4>
-                    <p style="font-size:0.8rem; margin:0;">Evaluar resiliencia del portafolio ante crisis climáticas.</p>
-                </div>
-                <div style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-top:3px solid var(--gold);">
-                    <i class="fas fa-link" style="color:var(--gold);"></i>
-                    <h4 style="font-size:0.9rem; margin:0.2rem 0;">Compensación ejecutiva</h4>
-                    <p style="font-size:0.8rem; margin:0;">Vincular bonos al cumplimiento de metas ASG.</p>
-                </div>
-                <div style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-top:3px solid var(--green);">
-                    <i class="fas fa-comments" style="color:var(--green);"></i>
-                    <h4 style="font-size:0.9rem; margin:0.2rem 0;">Cultura de transparencia</h4>
-                    <p style="font-size:0.8rem; margin:0;">Divulgar lecciones aprendidas y metas no alcanzadas.</p>
-                </div>
-            </div>
-            <p style="font-style:italic; color:var(--text-muted); margin-top:1.8rem; font-size:0.95rem;">
-                <i class="fas fa-quote-left" style="color:var(--cyan); opacity:0.5;"></i>
-                La sostenibilidad no es un destino, sino un proceso de mejora continua que exige <span style="color:var(--text-primary);">autocrítica, diálogo con los grupos de interés y acciones concretas</span>.
-                <i class="fas fa-quote-right" style="color:var(--cyan); opacity:0.5;"></i>
-            </p>
-        </div>
-
-        <!-- ============================================
-        FOOTER
-        ============================================ -->
-        <div class="footer-dark">
-            <div>
-                <i class="fas fa-book-open" style="color:var(--cyan);"></i> Fuentes: Informe Davivienda 2025 · S&P Global · WBA · CDP
+    <!-- ==================== PORTADA ==================== -->
+    <header style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; padding-bottom:1rem; border-bottom:1px solid var(--border-card);">
+        <div style="display:flex; align-items:center; gap:1.2rem;">
+            <div style="width:60px; height:60px; background:linear-gradient(135deg, #00d4ff, #0066ff); border-radius:16px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.8rem; color:#fff; box-shadow:0 8px 24px rgba(0,212,255,0.25);">
+                D
             </div>
             <div>
-                <span>Brochure interactivo · UNAD · ECAPMA · 2026</span>
-                <span style="margin-left:1rem;"><a href="https://sostenibilidad.davivienda.com" target="_blank">sostenibilidad.davivienda.com</a></span>
+                <h1 style="font-size:1.8rem; font-weight:700; letter-spacing:-0.5px;">Davivienda <span style="color:var(--cyan);">·</span> Sostenibilidad</h1>
+                <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:0.1rem;">
+                    <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fas fa-calendar-alt" style="color:var(--cyan);"></i> Informe Anual 2025</span>
+                    <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fas fa-users" style="color:var(--cyan);"></i> Grupo 302427742_1</span>
+                </div>
             </div>
         </div>
+        <div style="text-align:right; background:var(--bg-card); padding:0.5rem 1.5rem; border-radius:40px; border:1px solid var(--border-card);">
+            <p style="margin:0; font-size:0.8rem; color:var(--text-secondary);">Isis Molina · Josué Avella · Erika Macías</p>
+            <p style="margin:0; font-size:0.7rem; color:var(--text-muted);">Julio 2026</p>
+        </div>
+    </header>
 
+    <!-- ==================== KPIs ==================== -->
+    <div class="kpi-grid">
+        <div class="kpi-card kpi-cyan">
+            <div class="kpi-label"><i class="fas fa-users" style="margin-right:0.3rem;"></i> Clientes</div>
+            <div class="kpi-value"><span id="counter1">26.1</span><span class="unit">M</span></div>
+            <div class="kpi-trend" style="color:var(--cyan);"><i class="fas fa-arrow-up"></i> +4.2% anual</div>
+            <div class="kpi-icon"><i class="fas fa-user-friends"></i></div>
+        </div>
+        <div class="kpi-card kpi-green">
+            <div class="kpi-label"><i class="fas fa-coins" style="margin-right:0.3rem;"></i> Cartera Sostenible</div>
+            <div class="kpi-value"><span id="counter2">30.6</span><span class="unit">B COP</span></div>
+            <div class="kpi-trend" style="color:var(--green);">17.8% de cartera total</div>
+            <div class="kpi-icon"><i class="fas fa-hand-holding-usd"></i></div>
+        </div>
+        <div class="kpi-card kpi-orange">
+            <div class="kpi-label"><i class="fas fa-phone-alt" style="margin-right:0.3rem;"></i> DaviPlata</div>
+            <div class="kpi-value"><span id="counter3">18.7</span><span class="unit">M</span></div>
+            <div class="kpi-trend" style="color:var(--orange);">Inclusión financiera</div>
+            <div class="kpi-icon"><i class="fas fa-mobile-alt"></i></div>
+        </div>
+        <div class="kpi-card kpi-red">
+            <div class="kpi-label"><i class="fas fa-cloud" style="margin-right:0.3rem;"></i> Huella de Carbono</div>
+            <div class="kpi-value"><span id="counter4">9.6</span><span class="unit">M tCO₂</span></div>
+            <div class="kpi-trend" style="color:var(--red);">Cartera financiada (Scope 3)</div>
+            <div class="kpi-icon"><i class="fas fa-industry"></i></div>
+        </div>
+        <div class="kpi-card kpi-gold">
+            <div class="kpi-label"><i class="fas fa-venus-mars" style="margin-right:0.3rem;"></i> Mujeres en Junta</div>
+            <div class="kpi-value"><span id="counter5">17</span><span class="unit">%</span></div>
+            <div class="kpi-trend" style="color:var(--gold);">Gobierno corporativo</div>
+            <div class="kpi-icon"><i class="fas fa-venus"></i></div>
+        </div>
     </div>
-    <!-- end dashboard -->
 
-    <!-- ============================================
-    JAVASCRIPT: TABS + CONTADORES ANIMADOS
-    ============================================ -->
-    <script>
-        // ----- 1. TABS INTERACTIVOS -----
-        const tabs = document.querySelectorAll('.tab-btn');
-        const contents = document.querySelectorAll('.tab-content');
+    <!-- ==================== TABS ==================== -->
+    <div class="tabs-container">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="tab1"><i class="fas fa-building"></i> Contexto</button>
+            <button class="tab-btn" data-tab="tab2"><i class="fas fa-map-pin"></i> Ubicación</button>
+            <button class="tab-btn" data-tab="tab3"><i class="fas fa-search"></i> Análisis Crítico</button>
+            <button class="tab-btn" data-tab="tab4"><i class="fas fa-chart-pie"></i> Propuestas</button>
+        </div>
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remover activo de todos
-                tabs.forEach(t => t.classList.remove('active'));
-                contents.forEach(c => c.classList.remove('active'));
+        <!-- TAB 1: CONTEXTO -->
+        <div id="tab1" class="tab-content active">
+            <div class="grid-2cols">
+                <div class="card-dark">
+                    <h4 style="color:var(--cyan);"><i class="fas fa-tag"></i> Sector &amp; CIIU</h4>
+                    <p><strong style="color:var(--text-primary);">Servicios Financieros</strong> · Código CIIU <span style="color:var(--cyan);">6412</span> (Bancos Comerciales).</p>
+                    <p style="margin-top:0.5rem;">Presencia en <strong style="color:var(--text-primary);">6 países</strong>: Colombia, Costa Rica, El Salvador, Honduras, Panamá y RD.</p>
+                    <div style="margin-top:0.8rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+                        <span class="badge-cyan">Respeto</span>
+                        <span class="badge-cyan">Equidad</span>
+                        <span class="badge-cyan">Disciplina</span>
+                        <span class="badge-cyan">Honestidad</span>
+                        <span class="badge-cyan">Entusiasmo</span>
+                    </div>
+                </div>
+                <div class="card-dark">
+                    <h4 style="color:var(--cyan);"><i class="fas fa-flag"></i> Misión &amp; Visión</h4>
+                    <p style="font-style:italic; color:var(--text-secondary);">“Generar valor para clientes, comunidad e inversionistas mediante un equipo humano íntegro, comprometido, innovador y orientado al aprendizaje continuo.”</p>
+                    <hr style="border-color:var(--border-card); margin:0.6rem 0;" />
+                    <p style="font-style:italic; color:var(--text-secondary);">“Crecimiento sostenible, innovación y generación de valor para los grupos de interés, consolidando una banca multilatina transparente y confiable.”</p>
+                </div>
+            </div>
+            <div class="card-dark" style="margin-top:0.5rem;">
+                <h4 style="color:var(--cyan);"><i class="fas fa-chart-pie"></i> Cartera Sostenible vs. Tradicional</h4>
+                <div class="chart-grid">
+                    <div class="donut-container">
+                        <div class="donut">
+                            <div class="hole">17.8%</div>
+                        </div>
+                        <div class="donut-label"><strong>Cartera Sostenible</strong> · COP 30.6 B</div>
+                    </div>
+                    <div style="align-self:center; color:var(--text-secondary); font-size:0.95rem; max-width:280px;">
+                        <p><i class="fas fa-circle" style="color:var(--cyan);"></i> <strong style="color:var(--text-primary);">17.8%</strong> alineada con ODS</p>
+                        <p><i class="fas fa-circle" style="color:var(--border-card);"></i> <strong style="color:var(--text-primary);">82.2%</strong> cartera tradicional</p>
+                        <p style="margin-top:0.5rem; font-size:0.85rem; color:var(--text-muted);">Meta: alcanzar el 25% para 2028.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                // Activar el seleccionado
-                this.classList.add('active');
-                const target = document.getElementById(this.dataset.tab);
-                if (target) target.classList.add('active');
-            });
+        <!-- TAB 2: UBICACIÓN -->
+        <div id="tab2" class="tab-content">
+            <div class="grid-2cols">
+                <div>
+                    <div class="card-dark">
+                        <h4 style="color:var(--cyan);"><i class="fas fa-location-dot"></i> Sede Principal</h4>
+                        <p><strong style="color:var(--text-primary);">Avenida El Dorado No. 68C-61</strong>, Bogotá, Colombia.</p>
+                        <p style="margin-top:0.3rem;">Oficina corporativa: Carrera 13 No. 26-15.</p>
+                    </div>
+                    <div class="card-dark">
+                        <h4 style="color:var(--cyan);"><i class="fas fa-cloud-sun"></i> Clima &amp; Demografía</h4>
+                        <ul style="padding-left:1.2rem; color:var(--text-secondary);">
+                            <li><strong style="color:var(--text-primary);">Bogotá:</strong> Altitud 2.600 m · Temp. media 14°C · Sabana tropical.</li>
+                            <li><strong style="color:var(--text-primary);">Centroamérica:</strong> Clima tropical, afectado por El Niño y huracanes.</li>
+                            <li><strong style="color:var(--text-primary);">Contexto:</strong> Zonas urbanas de alta densidad, desafíos de inclusión en zonas rurales.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="map-wrapper">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.533238878497!2d-74.10488968423856!3d4.648840543599678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b9a6b4b6b6b%3A0x6b6b6b6b6b6b6b6b!2sAvenida%20El%20Dorado%20%2368C-61%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1650000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Davivienda Bogotá"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: ANÁLISIS CRÍTICO -->
+        <div id="tab3" class="tab-content">
+            <div style="margin-bottom:1rem; background:rgba(255,255,255,0.02); border-radius:12px; padding:1rem 1.5rem; border:1px dashed var(--border-card);">
+                <p style="color:var(--text-primary); font-weight:500; font-size:1.05rem;">
+                    <i class="fas fa-quote-left" style="color:var(--orange);"></i> 
+                    No basta con describir buenas prácticas: debemos <span style="color:var(--cyan);">cuestionar, evaluar riesgos y proponer</span> estrategias que fortalezcan la transparencia y la justicia social.
+                </p>
+            </div>
+
+            <div class="alert-card">
+                <strong><i class="fas fa-exclamation-triangle"></i> Discurso vs. Inversión real</strong>
+                <p style="margin-top:0.3rem;">Reconocido en el <strong style="color:var(--text-primary);">Top 10% S&P Global</strong>, pero la <strong style="color:var(--red);">World Benchmarking Alliance</strong> le otorga calificación <strong style="color:var(--red);">“D”</strong> en transición climática. Sus reducciones de emisiones <em>“son incompatibles con una trayectoria ambiciosa de 1.5 °C”</em>.</p>
+            </div>
+
+            <div class="alert-card warning">
+                <strong><i class="fas fa-hand-holding-usd"></i> Inclusión financiera con límites</strong>
+                <p style="margin-top:0.3rem;">DaviPlata (18.7M) y microcréditos avanzan, pero persisten <strong style="color:var(--orange);">brechas digitales</strong> en zonas rurales y riesgo de sobreendeudamiento. La <strong style="color:var(--orange);">representación femenina</strong> en la junta es solo del <strong style="color:var(--orange);">17%</strong>.</p>
+            </div>
+
+            <div class="alert-card info">
+                <strong><i class="fas fa-leaf"></i> Impacto ambiental indirecto</strong>
+                <p style="margin-top:0.3rem;">Certificado como <strong style="color:var(--cyan);">Carbono Neutro</strong> (operaciones propias), pero su <strong style="color:var(--cyan);">huella de carbono total</strong> (cartera financiada) asciende a <strong style="color:var(--cyan);">9.6 M tCO₂</strong>, sin metas de descarbonización alineadas con el Acuerdo de París para toda la cartera.</p>
+            </div>
+
+            <!-- Gráfico de brecha de inversión -->
+            <div style="background:var(--bg-card); border-radius:16px; padding:1.5rem; border:1px solid var(--border-card); margin-top:0.8rem;">
+                <h4 style="color:var(--text-primary); font-size:1rem;"><i class="fas fa-chart-bar" style="color:var(--red);"></i> Brecha de inversión climática</h4>
+                <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; margin-top:0.5rem;">
+                    <div style="flex:1; min-width:140px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted);"><span>Inversión baja en carbono</span> <span style="color:var(--red);">0.8%</span></div>
+                        <div style="width:100%; height:8px; background:var(--border-card); border-radius:40px; overflow:hidden;">
+                            <div style="width:0.8%; height:100%; background:var(--red); border-radius:40px;"></div>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;"><span>Necesario para 1.5°C</span> <span style="color:var(--cyan);">~30%</span></div>
+                        <div style="width:100%; height:8px; background:var(--border-card); border-radius:40px; overflow:hidden;">
+                            <div style="width:30%; height:100%; background:var(--cyan); border-radius:40px;"></div>
+                        </div>
+                    </div>
+                    <div style="color:var(--text-muted); font-size:0.85rem; max-width:200px;">
+                        <i class="fas fa-arrow-right" style="color:var(--red);"></i> Riesgo reputacional por <strong style="color:var(--red);">greenwashing</strong> si no se establecen metas verificables.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referencia OCDE -->
+            <div style="margin-top:1.2rem; background:rgba(0, 212, 255, 0.04); border-radius:12px; padding:1rem 1.5rem; border-left:4px solid var(--cyan);">
+                <p style="font-size:0.9rem; color:var(--text-secondary); margin:0;">
+                    <i class="fas fa-building-columns" style="color:var(--cyan); margin-right:0.5rem;"></i>
+                    <strong style="color:var(--cyan);">Referencia OCDE:</strong> El <em>OECD Responsible Business Outlook 2026</em> y el <em>Environmental Performance Review: Colombia 2026</em> destacan la necesidad de que el sector financiero colombiano adopte estándares más rigurosos en la gestión de riesgos ambientales y sociales.
+                </p>
+            </div>
+        </div>
+
+        <!-- TAB 4: PROPUESTAS -->
+        <div id="tab4" class="tab-content">
+            <div style="background:rgba(0, 212, 255, 0.04); border-radius:16px; padding:1.8rem; border:1px solid rgba(0,212,255,0.15);">
+                <h3 style="color:var(--cyan); font-size:1.2rem; margin-bottom:0.8rem;">
+                    <i class="fas fa-lightbulb"></i> Estrategias para fortalecer la transparencia y el impacto
+                </h3>
+                <ul style="list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                    <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--cyan);">
+                        <strong style="color:var(--text-primary);">Indicadores verificables</strong>
+                        <p style="font-size:0.9rem; margin-top:0.2rem;">Publicar métricas de emisiones financiadas (PCAF) con verificación externa anual.</p>
+                    </li>
+                    <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--green);">
+                        <strong style="color:var(--text-primary);">Metas 1.5 °C (SBTi)</strong>
+                        <p style="font-size:0.9rem; margin-top:0.2rem;">Adoptar objetivos de reducción de emisiones para toda la cartera con Science Based Targets.</p>
+                    </li>
+                    <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--orange);">
+                        <strong style="color:var(--text-primary);">Política de exclusión</strong>
+                        <p style="font-size:0.9rem; margin-top:0.2rem;">Definir plazos para la salida progresiva de los sectores más contaminantes.</p>
+                    </li>
+                    <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--gold);">
+                        <strong style="color:var(--text-primary);">Impacto social real</strong>
+                        <p style="font-size:0.9rem; margin-top:0.2rem;">Medir movilidad social, reducción de pobreza y empoderamiento femenino, no solo número de beneficiarios.</p>
+                    </li>
+                    <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--purple); grid-column: span 2;">
+                        <strong style="color:var(--text-primary);">Gobierno corporativo</strong>
+                        <p style="font-size:0.9rem; margin-top:0.2rem;">Establecer metas concretas para aumentar la participación femenina en instancias directivas y crear comités de ética con stakeholders externos.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CONCLUSIÓN ==================== -->
+    <div style="background:linear-gradient(145deg, #1a1c2a, #14151c); border-radius:20px; padding:2.2rem 2.5rem; margin-top:1.5rem; border:1px solid var(--border-card); text-align:center;">
+        <h2 style="color:var(--cyan); font-size:1.8rem; font-weight:700; margin-bottom:0.8rem;">
+            <i class="fas fa-file-alt" style="margin-right:0.8rem;"></i>Conclusión
+        </h2>
+        <p style="font-size:1.1rem; max-width:850px; margin:0 auto; color:var(--text-secondary);">
+            Los informes de sostenibilidad de Davivienda son una herramienta valiosa, pero su utilidad administrativa depende de que <span style="color:var(--text-primary); font-weight:600;">trasciendan el discurso</span> y se conviertan en motores de cambio real.
+        </p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:1rem; margin-top:1.5rem; text-align:left;">
+            <div style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-top:3px solid var(--cyan);">
+                <i class="fas fa-chart-line" style="color:var(--cyan);"></i>
+                <h4 style="font-size:0.9rem; margin:0.2rem 0;">Análisis de escenarios</h4>
+                <p style="font-size:0.8rem; margin:0;">Evaluar resiliencia del portafolio ante crisis climáticas.</p>
+            </div>
+            <div style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-top:3px solid var(--gold);">
+                <i class="fas fa-link" style="color:var(--gold);"></i>
+                <h4 style="font-size:0.9rem; margin:0.2rem 0;">Compensación ejecutiva</h4>
+                <p style="font-size:0.8rem; margin:0;">Vincular bonos al cumplimiento de metas ASG.</p>
+            </div>
+            <div style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-top:3px solid var(--green);">
+                <i class="fas fa-comments" style="color:var(--green);"></i>
+                <h4 style="font-size:0.9rem; margin:0.2rem 0;">Cultura de transparencia</h4>
+                <p style="font-size:0.8rem; margin:0;">Divulgar lecciones aprendidas y metas no alcanzadas.</p>
+            </div>
+        </div>
+        <p style="font-style:italic; color:var(--text-muted); margin-top:1.8rem; font-size:0.95rem;">
+            <i class="fas fa-quote-left" style="color:var(--cyan); opacity:0.5;"></i>
+            La sostenibilidad no es un destino, sino un proceso de mejora continua que exige <span style="color:var(--text-primary);">autocrítica, diálogo con los grupos de interés y acciones concretas</span>.
+            <i class="fas fa-quote-right" style="color:var(--cyan); opacity:0.5;"></i>
+        </p>
+    </div>
+
+    <!-- ==================== REFERENCIAS ==================== -->
+    <div style="margin-top:2rem; background:var(--bg-card); border-radius:16px; padding:1.5rem 2rem; border:1px solid var(--border-card);">
+        <h4 style="color:var(--cyan); font-size:1rem; display:flex; align-items:center; gap:0.6rem;">
+            <i class="fas fa-book-open"></i> Referencias y fuentes
+        </h4>
+        <ul style="columns:2 250px; column-gap:1.5rem; list-style:none; padding:0; font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">Avendaño, M. &amp; Mondragón, S. (Eds.). (2020). <em>Las organizaciones desde una mirada del desarrollo sostenible</em>. Sello UNAD.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">Banco Davivienda S.A. (2025). <em>Informe anual 2025</em>.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">Domínguez, M. F. (2022). <em>302427742_Informe de sostenibilidad</em> [OVA]. UNAD.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">OCDE. (2020). <em>OECD iLibrary</em>. <a href="https://www.oecd.org/centrodemexico/publicaciones/" target="_blank" style="color:var(--cyan);">Enlace</a></li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">OCDE. (2026). <em>OECD Environmental Performance Reviews: Colombia 2026</em>.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">OCDE. (2026). <em>OECD Responsible Business Outlook 2026</em>.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">Panceri, J. (2021). <em>Sustentabilidad: economía, desarrollo sustentable y medioambiente</em>. Biblos.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">Pinilla, P. (2013). Informe de gestión sostenible de la industria del seguro en Colombia. <em>Fasecolda</em>.</li>
+        </ul>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <div class="footer-dark">
+        <div>
+            <i class="fas fa-users" style="color:var(--cyan);"></i> Brochure interactivo · UNAD · ECAPMA · 2026
+        </div>
+        <div>
+            <span><a href="https://sostenibilidad.davivienda.com" target="_blank">sostenibilidad.davivienda.com</a></span>
+        </div>
+    </div>
+
+</div>
+<!-- end dashboard -->
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+    // Tabs
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            const target = document.getElementById(this.dataset.tab);
+            if (target) target.classList.add('active');
         });
+    });
 
-        // ----- 2. ANIMACIÓN DE CONTADORES (al hacer scroll) -----
-        const counters = [
-            { id: 'counter1', target: 26.1, suffix: 'M', decimals: 1 },
-            { id: 'counter2', target: 30.6, suffix: 'B COP', decimals: 1 },
-            { id: 'counter3', target: 18.7, suffix: 'M', decimals: 1 },
-            { id: 'counter4', target: 9.6, suffix: 'M tCO₂', decimals: 1 },
-            { id: 'counter5', target: 17, suffix: '%', decimals: 0 }
-        ];
+    // Animación de contadores al hacer scroll
+    const counters = [
+        { id: 'counter1', target: 26.1, decimals: 1 },
+        { id: 'counter2', target: 30.6, decimals: 1 },
+        { id: 'counter3', target: 18.7, decimals: 1 },
+        { id: 'counter4', target: 9.6, decimals: 1 },
+        { id: 'counter5', target: 17, decimals: 0 }
+    ];
+    let animationStarted = false;
 
-        let animationStarted = false;
-
-        function animateCounters() {
-            if (animationStarted) return;
-            animationStarted = true;
-
-            counters.forEach(item => {
-                const el = document.getElementById(item.id);
-                if (!el) return;
-                const target = item.target;
-                const decimals = item.decimals;
-                const duration = 1500; // ms
-                const startTime = performance.now();
-
-                function updateCounter(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    // Función de easing suave
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    const currentValue = eased * target;
-                    el.textContent = currentValue.toFixed(decimals);
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        el.textContent = target.toFixed(decimals);
-                    }
-                }
-                requestAnimationFrame(updateCounter);
-            });
-        }
-
-        // Intersection Observer para disparar la animación al ver el dashboard
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !animationStarted) {
-                    animateCounters();
-                }
-            });
-        }, { threshold: 0.3 });
-
-        const dashboard = document.querySelector('.dashboard');
-        if (dashboard) observer.observe(dashboard);
-
-        // Si el usuario ya está viendo la página, igual se lanza
-        if (!animationStarted) {
-            // Pequeño timeout para asegurar que todo está cargado
-            setTimeout(() => {
-                const rect = dashboard.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    animateCounters();
-                }
-            }, 400);
-        }
-
-        // También al hacer scroll manual (por si se dispara tarde)
-        window.addEventListener('scroll', function() {
-            if (!animationStarted) {
-                const rect = dashboard.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    animateCounters();
-                }
+    function animateCounters() {
+        if (animationStarted) return;
+        animationStarted = true;
+        counters.forEach(item => {
+            const el = document.getElementById(item.id);
+            if (!el) return;
+            const target = item.target;
+            const decimals = item.decimals;
+            const duration = 1500;
+            const startTime = performance.now();
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const currentValue = eased * target;
+                el.textContent = currentValue.toFixed(decimals);
+                if (progress < 1) requestAnimationFrame(updateCounter);
+                else el.textContent = target.toFixed(decimals);
             }
+            requestAnimationFrame(updateCounter);
         });
-    </script>
+    }
 
+    // Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animationStarted) animateCounters();
+        });
+    }, { threshold: 0.3 });
+    const dashboard = document.querySelector('.dashboard');
+    if (dashboard) observer.observe(dashboard);
+
+    // Si ya está visible, arranca
+    if (!animationStarted) {
+        setTimeout(() => {
+            const rect = dashboard.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.8) animateCounters();
+        }, 400);
+    }
+    window.addEventListener('scroll', function() {
+        if (!animationStarted) {
+            const rect = dashboard.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.8) animateCounters();
+        }
+    });
+</script>
 </body>
 </html>
