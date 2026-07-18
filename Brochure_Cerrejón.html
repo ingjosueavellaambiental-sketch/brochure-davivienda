@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brochure · Cerrejón | Sostenibilidad 2024</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ---------- ESTILO OSCURO CON IDENTIDAD CERREJÓN ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: linear-gradient(145deg, #1a0e08 0%, #2d1810 50%, #1a0e08 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+        .dashboard {
+            max-width: 1300px;
+            width: 100%;
+            background: linear-gradient(145deg, #2a1a12 0%, #1a0e08 100%);
+            border-radius: 32px;
+            padding: 2.2rem 2.5rem;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(243, 156, 18, 0.15);
+            border: 1px solid rgba(243, 156, 18, 0.10);
+        }
+
+        /* ---------- PALETA CERREJÓN (oscura) ---------- */
+        :root {
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-card-hover: rgba(255, 255, 255, 0.08);
+            --border-card: rgba(243, 156, 18, 0.15);
+            --border-card-hover: #f39c12;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #999999;
+            --naranja: #f39c12;
+            --naranja-oscuro: #d68910;
+            --naranja-claro: #f7dc6f;
+            --naranja-fondo: rgba(243, 156, 18, 0.12);
+            --verde: #27ae60;
+            --rojo: #e74c3c;
+            --azul: #3498db;
+            --dorado: #f1c40f;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+        p, li, span {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--naranja-fondo);
+            padding-bottom: 0.7rem;
+        }
+        .section-title i {
+            color: var(--naranja);
+            font-size: 1.5rem;
+        }
+
+        .badge-naranja {
+            background: var(--naranja-fondo);
+            color: var(--naranja-claro);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-verde {
+            background: rgba(39, 174, 96, 0.15);
+            color: var(--verde);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-dorado {
+            background: rgba(241, 196, 15, 0.15);
+            color: var(--dorado);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------- KPI ---------- */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: all 0.25s ease;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--naranja);
+            box-shadow: 0 12px 32px rgba(243, 156, 18, 0.15);
+            background: var(--bg-card-hover);
+        }
+        .kpi-card .kpi-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+        .kpi-card .kpi-value {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+        .kpi-card .kpi-value .unit {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-left: 0.2rem;
+        }
+        .kpi-card .kpi-trend {
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+        .kpi-card .kpi-icon {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            font-size: 2.2rem;
+            opacity: 0.06;
+            color: var(--text-primary);
+        }
+        .kpi-naranja .kpi-value { color: var(--naranja); }
+        .kpi-naranja .kpi-icon { color: var(--naranja); opacity: 0.10; }
+        .kpi-verde .kpi-value { color: var(--verde); }
+        .kpi-verde .kpi-icon { color: var(--verde); opacity: 0.10; }
+        .kpi-dorado .kpi-value { color: var(--dorado); }
+        .kpi-dorado .kpi-icon { color: var(--dorado); opacity: 0.10; }
+        .kpi-rojo .kpi-value { color: var(--rojo); }
+        .kpi-rojo .kpi-icon { color: var(--rojo); opacity: 0.10; }
+        .kpi-azul .kpi-value { color: var(--azul); }
+        .kpi-azul .kpi-icon { color: var(--azul); opacity: 0.10; }
+
+        /* ---------- TABS ---------- */
+        .tabs-container {
+            margin: 2rem 0 1.5rem 0;
+        }
+        .tabs-header {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--naranja-fondo);
+            padding-bottom: 0.3rem;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 1.8rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            border-radius: 40px 40px 0 0;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: var(--naranja-fondo);
+        }
+        .tab-btn.active {
+            color: var(--naranja-claro);
+            border-bottom-color: var(--naranja);
+            background: var(--naranja-fondo);
+        }
+        .tab-btn.active i {
+            color: var(--naranja);
+        }
+        .tab-content {
+            display: none;
+            padding: 1.8rem 0.5rem 0.5rem 0.5rem;
+            animation: fadeUp 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- TARJETAS ---------- */
+        .card-dark {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.5rem;
+            transition: border 0.2s, background 0.2s;
+            backdrop-filter: blur(10px);
+        }
+        .card-dark:hover {
+            border-color: var(--naranja);
+            background: var(--bg-card-hover);
+        }
+        .grid-2cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .grid-3cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* ---------- MAPA ---------- */
+        .map-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-card);
+            margin: 1.2rem 0;
+        }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 260px;
+            border: 0;
+            display: block;
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        /* ---------- IMPACTOS ---------- */
+        .impact-box {
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            border-left: 4px solid;
+            margin-bottom: 1rem;
+            background: rgba(255,255,255,0.03);
+        }
+        .impact-box.positivo {
+            border-left-color: var(--verde);
+        }
+        .impact-box.positivo strong {
+            color: var(--verde);
+        }
+        .impact-box.negativo {
+            border-left-color: var(--rojo);
+        }
+        .impact-box.negativo strong {
+            color: var(--rojo);
+        }
+        .impact-box.neutro {
+            border-left-color: var(--dorado);
+        }
+        .impact-box.neutro strong {
+            color: var(--dorado);
+        }
+
+        /* ---------- ALERTAS ---------- */
+        .alert-card {
+            background: rgba(231, 76, 60, 0.08);
+            border-left: 5px solid var(--rojo);
+            padding: 1.2rem 1.8rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1rem 0;
+        }
+        .alert-card strong { color: var(--rojo); }
+        .alert-card.warning {
+            border-left-color: var(--naranja);
+            background: rgba(243, 156, 18, 0.08);
+        }
+        .alert-card.warning strong { color: var(--naranja-claro); }
+        .alert-card.info {
+            border-left-color: var(--azul);
+            background: rgba(52, 152, 219, 0.08);
+        }
+        .alert-card.info strong { color: var(--azul); }
+
+        /* ---------- DONUT ---------- */
+        .chart-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        .donut-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .donut {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(var(--verde) 0% 60%, rgba(255,255,255,0.05) 60% 100%);
+            position: relative;
+            box-shadow: 0 0 20px rgba(39, 174, 96, 0.10);
+        }
+        .donut .hole {
+            position: absolute;
+            width: 76px;
+            height: 76px;
+            background: #1a0e08;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--verde);
+        }
+        .donut-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        .donut-label strong {
+            color: var(--text-primary);
+        }
+
+        /* ---------- STAKEHOLDERS ---------- */
+        .stakeholder-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        .stakeholder-tag {
+            background: var(--naranja-fondo);
+            border: 1px solid rgba(243, 156, 18, 0.15);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        .stakeholder-tag i {
+            color: var(--naranja);
+            margin-right: 0.4rem;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer-dark {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-card);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        .footer-dark a {
+            color: var(--naranja-claro);
+            text-decoration: none;
+        }
+        .footer-dark a:hover {
+            text-decoration: underline;
+            color: var(--naranja);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            .dashboard { padding: 1.5rem 1.2rem; }
+            .grid-2cols { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+            .kpi-card .kpi-value { font-size: 1.6rem; }
+        }
+        @media (max-width: 550px) {
+            .tabs-header {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+            .tab-btn {
+                text-align: left;
+                border-radius: 8px;
+                padding: 0.4rem 1rem;
+                border-bottom: none;
+                background: transparent;
+            }
+            .tab-btn.active {
+                background: var(--naranja-fondo);
+                border-bottom: none;
+            }
+            .donut { width: 100px; height: 100px; }
+            .donut .hole { width: 64px; height: 64px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="dashboard">
+
+    <!-- ==================== PORTADA ==================== -->
+    <header style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; padding-bottom:1rem; border-bottom:2px solid var(--naranja-fondo);">
+        <div style="display:flex; align-items:center; gap:1.2rem;">
+            <div style="width:60px; height:60px; background:linear-gradient(135deg, var(--naranja), var(--naranja-oscuro)); border-radius:16px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.8rem; color:#fff; box-shadow:0 8px 24px rgba(243,156,18,0.35);">
+                C
+            </div>
+            <div>
+                <h1 style="font-size:1.8rem; font-weight:700; letter-spacing:-0.5px; color:var(--text-primary);">Cerrejón <span style="color:var(--naranja);">·</span> Sostenibilidad</h1>
+                <div style="display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:0.1rem;">
+                    <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fas fa-calendar-alt" style="color:var(--naranja);"></i> Informe Anual 2024</span>
+                    <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fas fa-users" style="color:var(--naranja);"></i> Grupo 302427742_1</span>
+                    <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fas fa-globe" style="color:var(--naranja);"></i> <a href="https://emmacias100318-lgtm.github.io/CERREJON/" target="_blank" style="color:var(--naranja-claro);">Ver en línea</a></span>
+                </div>
+                <!-- Propósito visible -->
+                <div style="margin-top:0.5rem; background:var(--naranja-fondo); border-radius:8px; padding:0.3rem 1rem; border:1px solid rgba(243,156,18,0.15); display:inline-block;">
+                    <p style="font-size:0.8rem; color:var(--text-secondary); margin:0;">
+                        <i class="fas fa-bullseye" style="color:var(--naranja);"></i>
+                        <strong style="color:var(--text-primary);">Propósito:</strong> Rendición de cuentas transparente sobre nuestra gestión social, ambiental y económica en La Guajira.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:right; background:var(--bg-card); padding:0.5rem 1.5rem; border-radius:40px; border:1px solid var(--border-card);">
+            <p style="margin:0; font-size:0.8rem; color:var(--text-secondary);">Isis Molina · Josué Avella · Erika Macías</p>
+            <p style="margin:0; font-size:0.7rem; color:var(--text-muted);">Julio 2026</p>
+            <div style="display:flex; gap:0.5rem; margin-top:0.3rem; justify-content:flex-end; flex-wrap:wrap;">
+                <span class="badge-naranja"><i class="fas fa-check-circle"></i> GRI Core</span>
+                <span class="badge-verde"><i class="fas fa-check-circle"></i> ODS</span>
+                <span class="badge-naranja"><i class="fas fa-check-circle"></i> ICMM</span>
+                <span class="badge-verde"><i class="fas fa-check-circle"></i> ISO 14064</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== KPIs ==================== -->
+    <div class="kpi-grid">
+        <div class="kpi-card kpi-naranja">
+            <div class="kpi-label"><i class="fas fa-users" style="margin-right:0.3rem;"></i> Empleados</div>
+            <div class="kpi-value"><span id="counter1">13.8</span><span class="unit">k</span></div>
+            <div class="kpi-trend" style="color:var(--naranja);">60% guajiros</div>
+            <div class="kpi-icon"><i class="fas fa-hard-hat"></i></div>
+        </div>
+        <div class="kpi-card kpi-verde">
+            <div class="kpi-label"><i class="fas fa-tree" style="margin-right:0.3rem;"></i> Árboles sembrados</div>
+            <div class="kpi-value"><span id="counter2">3.7</span><span class="unit">M</span></div>
+            <div class="kpi-trend" style="color:var(--verde);">Bosque seco tropical</div>
+            <div class="kpi-icon"><i class="fas fa-seedling"></i></div>
+        </div>
+        <div class="kpi-card kpi-verde">
+            <div class="kpi-label"><i class="fas fa-map" style="margin-right:0.3rem;"></i> Ha rehabilitadas</div>
+            <div class="kpi-value"><span id="counter3">5.2</span><span class="unit">k</span></div>
+            <div class="kpi-trend" style="color:var(--verde);">+640k árboles en 2024</div>
+            <div class="kpi-icon"><i class="fas fa-mountain"></i></div>
+        </div>
+        <div class="kpi-card kpi-dorado">
+            <div class="kpi-label"><i class="fas fa-coins" style="margin-right:0.3rem;"></i> Regalías pagadas</div>
+            <div class="kpi-value"><span id="counter4">895</span><span class="unit">B COP</span></div>
+            <div class="kpi-trend" style="color:var(--dorado);">Inversión ambiental: 456B</div>
+            <div class="kpi-icon"><i class="fas fa-hand-holding-usd"></i></div>
+        </div>
+        <div class="kpi-card kpi-rojo">
+            <div class="kpi-label"><i class="fas fa-ban" style="margin-right:0.3rem;"></i> Bloqueos 2024</div>
+            <div class="kpi-value"><span id="counter5">333</span><span class="unit"></span></div>
+            <div class="kpi-trend" style="color:var(--rojo);">135 días sin tren</div>
+            <div class="kpi-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        </div>
+    </div>
+
+    <!-- ==================== TABS ==================== -->
+    <div class="tabs-container">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="tab1"><i class="fas fa-building"></i> Contexto</button>
+            <button class="tab-btn" data-tab="tab2"><i class="fas fa-map-pin"></i> Territorio</button>
+            <button class="tab-btn" data-tab="tab3"><i class="fas fa-users"></i> Grupos de Interés</button>
+            <button class="tab-btn" data-tab="tab4"><i class="fas fa-search"></i> Análisis Crítico</button>
+            <button class="tab-btn" data-tab="tab5"><i class="fas fa-rocket"></i> Propuestas</button>
+        </div>
+
+        <!-- ========== TAB 1: CONTEXTO ========== -->
+        <div id="tab1" class="tab-content active">
+            <div class="grid-2cols">
+                <div class="card-dark">
+                    <h4 style="color:var(--naranja);"><i class="fas fa-tag"></i> Sector &amp; CIIU</h4>
+                    <p><strong style="color:var(--text-primary);">Sector Extractivo</strong> · Código CIIU <span style="color:var(--naranja);">0510</span> (Extracción de carbón).</p>
+                    <p style="margin-top:0.5rem;">Operación integrada: mina a cielo abierto, ferrocarril de 150 km y puerto de exportación en La Guajira.</p>
+                    <div style="margin-top:0.8rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+                        <span class="badge-naranja">Seguridad</span>
+                        <span class="badge-naranja">Integridad</span>
+                        <span class="badge-naranja">Transparencia</span>
+                        <span class="badge-naranja">Responsabilidad</span>
+                    </div>
+                </div>
+                <div class="card-dark">
+                    <h4 style="color:var(--naranja);"><i class="fas fa-flag"></i> Misión &amp; Visión</h4>
+                    <p style="font-style:italic; color:var(--text-secondary);">“Generar valor compartido para La Guajira y Colombia, operando con altos estándares de responsabilidad social, ambiental y respeto por los Derechos Humanos.”</p>
+                    <hr style="border-color:var(--border-card); margin:0.6rem 0;" />
+                    <p style="font-style:italic; color:var(--text-secondary);">“Ser una operación minera reconocida por su excelencia en sostenibilidad, con un cierre responsable que deje un legado positivo para las comunidades y el entorno.”</p>
+                </div>
+            </div>
+
+            <!-- Compromiso con la sostenibilidad -->
+            <div class="card-dark">
+                <h4 style="color:var(--naranja);"><i class="fas fa-handshake"></i> Nuestro compromiso con la sostenibilidad</h4>
+                <p>Cerrejón asume la sostenibilidad como un pilar estratégico, con enfoque en la gestión responsable de sus impactos sociales, ambientales y económicos en La Guajira.</p>
+                <div class="grid-3cols" style="margin-top:0.8rem;">
+                    <div style="background:var(--naranja-fondo); border-radius:12px; padding:1rem; border:1px solid rgba(243,156,18,0.10);">
+                        <i class="fas fa-hand-holding-heart" style="color:var(--naranja);"></i>
+                        <h5 style="color:var(--text-primary); font-size:0.95rem; margin:0.3rem 0;">Inversión social</h5>
+                        <p style="font-size:0.85rem; margin:0;">COP 86B en proyectos sociales voluntarios y obligatorios en 2024.</p>
+                    </div>
+                    <div style="background:var(--naranja-fondo); border-radius:12px; padding:1rem; border:1px solid rgba(243,156,18,0.10);">
+                        <i class="fas fa-leaf" style="color:var(--verde);"></i>
+                        <h5 style="color:var(--text-primary); font-size:0.95rem; margin:0.3rem 0;">Gestión ambiental</h5>
+                        <p style="font-size:0.85rem; margin:0;">5.200 ha rehabilitadas, 3.7M árboles sembrados, 91% agua de fuentes no aptas.</p>
+                    </div>
+                    <div style="background:var(--naranja-fondo); border-radius:12px; padding:1rem; border:1px solid rgba(243,156,18,0.10);">
+                        <i class="fas fa-handshake" style="color:var(--dorado);"></i>
+                        <h5 style="color:var(--text-primary); font-size:0.95rem; margin:0.3rem 0;">Diálogo social</h5>
+                        <p style="font-size:0.85rem; margin:0;">401 acuerdos de consulta previa firmados en el marco de la sentencia T-704.</p>
+                    </div>
+                </div>
+                <div style="margin-top:0.8rem; display:flex; flex-wrap:wrap; gap:0.5rem;">
+                    <span class="badge-naranja"><i class="fas fa-check"></i> GRI Core</span>
+                    <span class="badge-verde"><i class="fas fa-check"></i> ICMM</span>
+                    <span class="badge-naranja"><i class="fas fa-check"></i> ISO 14064</span>
+                    <span class="badge-verde"><i class="fas fa-check"></i> Pacto Global (2005)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB 2: TERRITORIO ========== -->
+        <div id="tab2" class="tab-content">
+            <div class="grid-2cols">
+                <div>
+                    <div class="card-dark">
+                        <h4 style="color:var(--naranja);"><i class="fas fa-location-dot"></i> Ubicación</h4>
+                        <p><strong style="color:var(--text-primary);">Mina:</strong> Municipios de Albania, Barrancas y Hatonuevo, La Guajira.</p>
+                        <p style="margin-top:0.3rem;"><strong style="color:var(--text-primary);">Ferrocarril:</strong> 150 km desde la mina hasta Puerto Bolívar.</p>
+                        <p style="margin-top:0.3rem;"><strong style="color:var(--text-primary);">Puerto:</strong> Puerto Bolívar, en el mar Caribe.</p>
+                    </div>
+                    <div class="card-dark">
+                        <h4 style="color:var(--naranja);"><i class="fas fa-cloud-sun"></i> Condiciones del territorio</h4>
+                        <ul style="padding-left:1.2rem; color:var(--text-secondary);">
+                            <li><strong style="color:var(--text-primary);">Clima:</strong> Árido/semiárido, altas temperaturas, baja pluviosidad.</li>
+                            <li><strong style="color:var(--text-primary);">Ecosistemas:</strong> Bosque seco tropical, desierto de La Guajira, cercanía al mar Caribe.</li>
+                            <li><strong style="color:var(--text-primary);">Contexto social:</strong> Territorio wayuu, comunidades afrodescendientes, altos índices de pobreza y necesidades básicas insatisfechas.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="map-wrapper">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15615.791013208143!2d-72.50878372909596!3d11.769888089442432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a2a61ebc4481b%3A0x2ed7fd0c55fb5c1a!2sCerrej%C3%B3n%20Mina!5e0!3m2!1ses!2sco!4v1650000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Cerrejón en La Guajira"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impactos en el territorio -->
+            <div class="card-dark">
+                <h4 style="color:var(--naranja);"><i class="fas fa-bolt"></i> Impactos en el territorio</h4>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                    <div class="impact-box positivo">
+                        <strong><i class="fas fa-plus-circle"></i> Impactos positivos</strong>
+                        <ul style="padding-left:1.2rem; margin-top:0.3rem; font-size:0.9rem;">
+                            <li><strong style="color:var(--text-primary);">Empleo local:</strong> 60% de 13.778 empleados son guajiros.</li>
+                            <li><strong style="color:var(--text-primary);">Rehabilitación ambiental:</strong> 5.200 ha y 3.7M árboles sembrados.</li>
+                            <li><strong style="color:var(--text-primary);">Agua:</strong> 57M litros entregados a 164 comunidades (Tren del Agua).</li>
+                            <li><strong style="color:var(--text-primary);">Regalías:</strong> 895B COP al Gobierno nacional y 70B a La Guajira.</li>
+                            <li><strong style="color:var(--text-primary);">Encadenamientos:</strong> 300B COP en compras a proveedores locales.</li>
+                        </ul>
+                    </div>
+                    <div class="impact-box negativo">
+                        <strong><i class="fas fa-minus-circle"></i> Impactos negativos y riesgos</strong>
+                        <ul style="padding-left:1.2rem; margin-top:0.3rem; font-size:0.9rem;">
+                            <li><strong style="color:var(--text-primary);">Bloqueos:</strong> 333 eventos, 135 días sin tren en 2024.</li>
+                            <li><strong style="color:var(--text-primary);">Conflictos sociales:</strong> Tensiones con comunidades wayuu y afrodescendientes por consulta previa y compensaciones.</li>
+                            <li><strong style="color:var(--text-primary);">Cierre de mina:</strong> 2034. Plan de reversión en curso.</li>
+                            <li><strong style="color:var(--text-primary);">Dependencia hídrica:</strong> 91% de agua de fuentes no aptas, pero alta demanda del recurso.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="margin-top:0.8rem; background:rgba(243,156,18,0.08); border-radius:8px; padding:0.8rem 1.2rem; border:1px solid rgba(243,156,18,0.10);">
+                    <p style="font-size:0.85rem; margin:0; color:var(--text-secondary);">
+                        <i class="fas fa-exclamation-triangle" style="color:var(--naranja);"></i>
+                        <strong style="color:var(--naranja);">Riesgo reputacional:</strong> La alta incidencia de bloqueos (333 en 2024) y la percepción de insuficiente inversión social pueden generar desconfianza y afectar la licencia social para operar.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB 3: GRUPOS DE INTERÉS ========== -->
+        <div id="tab3" class="tab-content">
+            <div class="card-dark">
+                <h4 style="color:var(--naranja);"><i class="fas fa-handshake"></i> Nuestros grupos de interés</h4>
+                <p>Cerrejón mantiene un relacionamiento activo con sus stakeholders a través de mecanismos de diálogo formal y consulta, buscando construir confianza y gestionar impactos de manera colaborativa.</p>
+                <div class="stakeholder-grid">
+                    <span class="stakeholder-tag"><i class="fas fa-user-tie"></i> Accionistas (Glencore)</span>
+                    <span class="stakeholder-tag"><i class="fas fa-users"></i> Comunidades wayuu</span>
+                    <span class="stakeholder-tag"><i class="fas fa-users"></i> Comunidades afro</span>
+                    <span class="stakeholder-tag"><i class="fas fa-hard-hat"></i> Empleados</span>
+                    <span class="stakeholder-tag"><i class="fas fa-handshake"></i> Sindicatos</span>
+                    <span class="stakeholder-tag"><i class="fas fa-building"></i> Contratistas</span>
+                    <span class="stakeholder-tag"><i class="fas fa-landmark"></i> Gobierno local/nacional</span>
+                    <span class="stakeholder-tag"><i class="fas fa-university"></i> Gremios (ANDI)</span>
+                    <span class="stakeholder-tag"><i class="fas fa-globe-americas"></i> ONGs</span>
+                    <span class="stakeholder-tag"><i class="fas fa-newspaper"></i> Medios</span>
+                </div>
+            </div>
+
+            <div class="grid-2cols">
+                <div class="card-dark">
+                    <h4 style="color:var(--naranja);"><i class="fas fa-comments"></i> Mecanismos de diálogo</h4>
+                    <ul style="padding-left:1.2rem; color:var(--text-secondary);">
+                        <li>Consulta previa (sentencia T-704)</li>
+                        <li>Puntos de Encuentro con Comunidades (PECC)</li>
+                        <li>Oficina de Quejas (desde 2010)</li>
+                        <li>Mesas de trabajo con alcaldes y gobernación</li>
+                        <li>Comités de veeduría ambiental</li>
+                        <li>Convenios con universidades y gremios</li>
+                    </ul>
+                    <p style="margin-top:0.5rem; font-size:0.85rem; color:var(--text-muted);">
+                        <i class="fas fa-info-circle" style="color:var(--naranja);"></i>
+                        Estos mecanismos permiten identificar expectativas, resolver conflictos y construir acuerdos para el desarrollo territorial.
+                    </p>
+                </div>
+                <div class="card-dark">
+                    <h4 style="color:var(--naranja);"><i class="fas fa-bullhorn"></i> Lo que dicen nuestros grupos de interés</h4>
+                    <div style="background:var(--naranja-fondo); border-radius:8px; padding:0.8rem 1rem; border-left:3px solid var(--naranja); margin-bottom:0.8rem;">
+                        <p style="font-size:0.9rem; font-style:italic; color:var(--text-secondary); margin:0;">
+                            “Los bloqueos afectan nuestra operación, pero entendemos las necesidades de las comunidades. El diálogo es el único camino.”
+                            <span style="display:block; font-style:normal; color:var(--text-muted); font-size:0.8rem; margin-top:0.2rem;">— Claudia Bejarano, Presidenta de Cerrejón</span>
+                        </p>
+                    </div>
+                    <div style="background:rgba(243,156,18,0.08); border-radius:8px; padding:0.8rem 1rem; border-left:3px solid var(--dorado);">
+                        <p style="font-size:0.9rem; font-style:italic; color:var(--text-secondary); margin:0;">
+                            “Queremos que se respeten nuestros usos y costumbres y que las compensaciones lleguen a toda la comunidad.”
+                            <span style="display:block; font-style:normal; color:var(--text-muted); font-size:0.8rem; margin-top:0.2rem;">— Líder tradicional wayuu</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB 4: ANÁLISIS CRÍTICO ========== -->
+        <div id="tab4" class="tab-content">
+            <div style="margin-bottom:1rem; background:var(--naranja-fondo); border-radius:12px; padding:1rem 1.5rem; border:1px dashed rgba(243,156,18,0.20);">
+                <p style="color:var(--text-primary); font-weight:500; font-size:1.05rem;">
+                    <i class="fas fa-quote-left" style="color:var(--naranja);"></i> 
+                    No basta con describir buenas prácticas: debemos <span style="color:var(--naranja-claro);">cuestionar, evaluar riesgos y proponer</span> estrategias que fortalezcan la transparencia, la justicia social y la confianza con los grupos de interés.
+                </p>
+            </div>
+
+            <!-- Tensión 1 -->
+            <div class="alert-card">
+                <strong><i class="fas fa-exclamation-triangle"></i> Tensión 1: Dependencia económica vs. conflicto social</strong>
+                <p style="margin-top:0.3rem;">Cerrejón es el mayor pagador de regalías de La Guajira (895B COP en 2024), pero los <strong style="color:var(--rojo);">333 bloqueos</strong> evidencian tensiones profundas con comunidades que exigen mayor participación y soluciones a necesidades básicas (agua, educación, salud).</p>
+                <div style="margin-top:0.5rem; background:rgba(231,76,60,0.08); border-radius:8px; padding:0.6rem 1rem;">
+                    <p style="font-size:0.85rem; margin:0; color:var(--text-secondary);">
+                        <i class="fas fa-arrow-right" style="color:var(--rojo);"></i>
+                        <strong style="color:var(--rojo);">Riesgo:</strong> La percepción de insuficiente inversión social y los bloqueos recurrentes ponen en riesgo la continuidad operativa y la licencia social de la empresa.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tensión 2 -->
+            <div class="alert-card warning">
+                <strong><i class="fas fa-hand-holding-usd"></i> Tensión 2: Modelo extractivo vs. transición energética</strong>
+                <p style="margin-top:0.3rem;">El cierre de la mina está programado para <strong style="color:var(--naranja-claro);">2034</strong>. Esto plantea un desafío monumental: ¿cómo asegurar una <strong style="color:var(--naranja-claro);">transición justa</strong> para 13.778 empleados y las comunidades que dependen de la operación?</p>
+                <ul style="padding-left:1.2rem; margin-top:0.3rem; color:var(--text-secondary); font-size:0.9rem;">
+                    <li>La <strong style="color:var(--text-primary);">falta de un plan detallado</strong> de transición puede generar incertidumbre y descontento social.</li>
+                    <li>El <strong style="color:var(--text-primary);">legado ambiental</strong> (5.200 ha rehabilitadas) debe ser sostenible en el largo plazo.</li>
+                    <li>La <strong style="color:var(--text-primary);">diversificación económica</strong> de La Guajira es urgente y necesaria.</li>
+                </ul>
+            </div>
+
+            <!-- Tensión 3 -->
+            <div class="alert-card info">
+                <strong><i class="fas fa-leaf"></i> Tensión 3: Gestión del agua en un territorio árido</strong>
+                <p style="margin-top:0.3rem;">El 91% del agua utilizada en la operación proviene de fuentes no aptas para consumo humano, pero Cerrejón opera en una de las regiones con mayor escasez de agua del país. El programa <strong style="color:var(--azul);">Tren del Agua</strong> entrega 57M litros a 164 comunidades, pero la demanda sigue siendo alta.</p>
+                <div style="margin-top:0.5rem; background:rgba(52,152,219,0.08); border-radius:8px; padding:0.6rem 1rem;">
+                    <p style="font-size:0.85rem; margin:0; color:var(--text-secondary);">
+                        <i class="fas fa-arrow-right" style="color:var(--azul);"></i>
+                        <strong style="color:var(--azul);">Oportunidad:</strong> Fortalecer la infraestructura hídrica comunitaria y avanzar en acuerdos de conservación de cuencas para reducir la vulnerabilidad de las comunidades.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Gráfico: empleo local -->
+            <div style="background:var(--bg-card); border-radius:16px; padding:1.5rem; border:1px solid var(--border-card); margin-top:0.8rem;">
+                <h4 style="color:var(--text-primary); font-size:1rem;"><i class="fas fa-chart-bar" style="color:var(--naranja);"></i> Empleo local en Cerrejón</h4>
+                <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; margin-top:0.5rem;">
+                    <div style="flex:1; min-width:140px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted);"><span>Empleados guajiros</span> <span style="color:var(--naranja);">60%</span></div>
+                        <div style="width:100%; height:8px; background:rgba(255,255,255,0.05); border-radius:40px; overflow:hidden;">
+                            <div style="width:60%; height:100%; background:var(--naranja); border-radius:40px;"></div>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;"><span>Empleados no guajiros</span> <span style="color:var(--text-muted);">40%</span></div>
+                        <div style="width:100%; height:8px; background:rgba(255,255,255,0.05); border-radius:40px; overflow:hidden;">
+                            <div style="width:40%; height:100%; background:rgba(255,255,255,0.10); border-radius:40px;"></div>
+                        </div>
+                    </div>
+                    <div style="color:var(--text-muted); font-size:0.85rem; max-width:200px;">
+                        <i class="fas fa-arrow-right" style="color:var(--naranja);"></i> Cerrejón genera empleo para el <strong style="color:var(--naranja);">60%</strong> de su fuerza laboral en La Guajira, pero persiste el desafío de ampliar la participación de comunidades wayuu y afrodescendientes.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referencia OCDE -->
+            <div style="margin-top:1.2rem; background:var(--naranja-fondo); border-radius:12px; padding:1rem 1.5rem; border-left:4px solid var(--naranja);">
+                <p style="font-size:0.9rem; color:var(--text-secondary); margin:0;">
+                    <i class="fas fa-building-columns" style="color:var(--naranja); margin-right:0.5rem;"></i>
+                    <strong style="color:var(--naranja);">Referencia OCDE:</strong> El <em>OECD Environmental Performance Reviews: Colombia 2026</em> destaca la necesidad de que las empresas extractivas en Colombia fortalezcan la consulta previa y la gestión de conflictos sociales para garantizar una transición energética justa y ordenada.
+                </p>
+            </div>
+        </div>
+
+        <!-- ========== TAB 5: PROPUESTAS ========== -->
+        <div id="tab5" class="tab-content">
+            <div style="background:var(--naranja-fondo); border-radius:16px; padding:1.8rem; border:1px solid rgba(243,156,18,0.15);">
+                <h3 style="color:var(--naranja-claro); font-size:1.2rem; margin-bottom:0.8rem;">
+                    <i class="fas fa-rocket"></i> Oportunidades de mejora: fortaleciendo la sostenibilidad en La Guajira
+                </h3>
+                <p style="margin-bottom:1.2rem;">A partir del análisis crítico, identificamos las siguientes oportunidades para fortalecer la gestión de sostenibilidad de Cerrejón:</p>
+                <ul style="list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                    <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--naranja);">
+                        <strong style="color:var(--text-primary);">1. Plan de transición justa</strong>
+                        <p style="font-size:0.9rem; margin-top:0.2rem;">Desarrollar e implementar un plan de transición para el cierre de la mina en 2034, con participación de comunidades, trabajadores y gobierno, que incluya diversificación económica y reconversión laboral.</p>
+                    </li>
+                    <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--verde);">
+                        <strong style="color:var(--text-primary);">2. Fortalecimiento de la consulta previa</strong>
+                        <p style="font-size:0.9rem; margin-top:0.2rem;">Acelerar la protocolización de acuerdos con comunidades afrodescendientes y wayuu, garantizando la participación efectiva y la ejecución transparente de los proyectos acordados.</p>
+                    </li>
+                    <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--azul);">
+                        <strong style="color:var(--text-primary);">3. Gestión del agua con enfoque territorial</strong>
+                        <p style="font-size:0.9rem; margin-top:0.2rem;">Ampliar el programa Tren del Agua con infraestructura de almacenamiento y sistemas de captación de agua lluvia, en alianza con gobiernos locales y comunidades.</p>
+                    </li>
+                    <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--dorado);">
+                        <strong style="color:var(--text-primary);">4. Diálogo social permanente</strong>
+                        <p style="font-size:0.9rem; margin-top:0.2rem;">Fortalecer los Puntos de Encuentro con Comunidades (PECC) y crear mesas de seguimiento con participación de veedores comunitarios para reducir los bloqueos.</p>
+                    </li>
+                    <li style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-left:4px solid var(--verde); grid-column: span 2;">
+                        <strong style="color:var(--text-primary);">5. Biodiversidad y economía local</strong>
+                        <p style="font-size:0.9rem; margin-top:0.2rem;">Consolidar el corredor biológico Wüin–Manna y generar encadenamientos productivos sostenibles (ecoturismo, artesanías, agroforestería) con comunidades vecinas, como alternativa económica post-minería.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Hoja de ruta -->
+            <div style="margin-top:1.5rem; background:var(--bg-card); border-radius:16px; padding:1.5rem; border:1px solid var(--border-card);">
+                <h4 style="color:var(--naranja); font-size:1rem;"><i class="fas fa-road"></i> Hoja de ruta sugerida (2025-2034)</h4>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1rem; margin-top:0.8rem;">
+                    <div style="background:var(--naranja-fondo); border-radius:8px; padding:0.8rem; border:1px solid rgba(243,156,18,0.10);">
+                        <span class="badge-naranja" style="display:inline-block; margin-bottom:0.3rem;">Corto plazo</span>
+                        <p style="font-size:0.85rem; margin:0;">Fortalecer PECC y reducir bloqueos. Acelerar acuerdos de consulta previa.</p>
+                    </div>
+                    <div style="background:var(--naranja-fondo); border-radius:8px; padding:0.8rem; border:1px solid rgba(243,156,18,0.10);">
+                        <span class="badge-verde" style="display:inline-block; margin-bottom:0.3rem;">Mediano plazo</span>
+                        <p style="font-size:0.85rem; margin:0;">Implementar plan de transición justa y diversificación económica en La Guajira.</p>
+                    </div>
+                    <div style="background:var(--naranja-fondo); border-radius:8px; padding:0.8rem; border:1px solid rgba(243,156,18,0.10);">
+                        <span class="badge-naranja" style="display:inline-block; margin-bottom:0.3rem;">Largo plazo</span>
+                        <p style="font-size:0.85rem; margin:0;">Cierre de mina en 2034 con legado ambiental y social positivo para La Guajira.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CONCLUSIÓN ==================== -->
+    <div style="background:linear-gradient(145deg, rgba(243,156,18,0.05), rgba(0,0,0,0.2)); border-radius:20px; padding:2.2rem 2.5rem; margin-top:1.5rem; border:1px solid var(--border-card); text-align:center;">
+        <h2 style="color:var(--naranja); font-size:1.8rem; font-weight:700; margin-bottom:0.8rem;">
+            <i class="fas fa-file-alt" style="margin-right:0.8rem;"></i>Conclusión
+        </h2>
+        <p style="font-size:1.1rem; max-width:850px; margin:0 auto; color:var(--text-secondary);">
+            Los informes de sostenibilidad de Cerrejón son una herramienta fundamental para la rendición de cuentas, pero su utilidad depende de que <span style="color:var(--text-primary); font-weight:600;">trasciendan la descripción de impactos y se conviertan en hojas de ruta para la acción</span>, construidas con la participación activa de las comunidades y el gobierno.
+        </p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1rem; margin-top:1.5rem; text-align:left;">
+            <div style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-top:3px solid var(--naranja);">
+                <i class="fas fa-handshake" style="color:var(--naranja);"></i>
+                <h4 style="font-size:0.9rem; margin:0.2rem 0;">Diálogo social</h4>
+                <p style="font-size:0.8rem; margin:0;">Fortalecer la consulta previa y los mecanismos de participación comunitaria para reducir los bloqueos.</p>
+            </div>
+            <div style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-top:3px solid var(--verde);">
+                <i class="fas fa-tree" style="color:var(--verde);"></i>
+                <h4 style="font-size:0.9rem; margin:0.2rem 0;">Legado ambiental</h4>
+                <p style="font-size:0.8rem; margin:0;">Asegurar la sostenibilidad de las áreas rehabilitadas y el corredor biológico Wüin–Manna.</p>
+            </div>
+            <div style="background:var(--bg-card); padding:1rem 1.2rem; border-radius:12px; border-top:3px solid var(--azul);">
+                <i class="fas fa-water" style="color:var(--azul);"></i>
+                <h4 style="font-size:0.9rem; margin:0.2rem 0;">Seguridad hídrica</h4>
+                <p style="font-size:0.8rem; margin:0;">Avanzar en soluciones de agua con enfoque territorial y participación comunitaria.</p>
+            </div>
+        </div>
+        <p style="font-style:italic; color:var(--text-muted); margin-top:1.8rem; font-size:0.95rem;">
+            <i class="fas fa-quote-left" style="color:var(--naranja); opacity:0.5;"></i>
+            La sostenibilidad en el sector extractivo no es un destino, sino un proceso de mejora continua que exige <span style="color:var(--text-primary);">autocrítica, diálogo con los grupos de interés y acciones concretas</span> que transformen la realidad de los territorios donde operamos.
+            <i class="fas fa-quote-right" style="color:var(--naranja); opacity:0.5;"></i>
+        </p>
+        <div style="margin-top:1rem; display:flex; flex-wrap:wrap; justify-content:center; gap:0.5rem;">
+            <span class="badge-naranja"><i class="fas fa-check"></i> Transparencia</span>
+            <span class="badge-verde"><i class="fas fa-check"></i> Autocrítica</span>
+            <span class="badge-naranja"><i class="fas fa-check"></i> Diálogo</span>
+            <span class="badge-verde" style="background:rgba(39,174,96,0.15); color:var(--verde); padding:0.2rem 1rem; border-radius:40px; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;"><i class="fas fa-check"></i> Acción</span>
+        </div>
+    </div>
+
+    <!-- ==================== REFERENCIAS ==================== -->
+    <div style="margin-top:2rem; background:var(--bg-card); border-radius:16px; padding:1.5rem 2rem; border:1px solid var(--border-card);">
+        <h4 style="color:var(--naranja); font-size:1rem; display:flex; align-items:center; gap:0.6rem;">
+            <i class="fas fa-book-open"></i> Referencias y fuentes
+        </h4>
+        <ul style="columns:2 250px; column-gap:1.5rem; list-style:none; padding:0; font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">Avendaño, M. &amp; Mondragón, S. (Eds.). (2020). <em>Las organizaciones desde una mirada del desarrollo sostenible</em>. Sello UNAD.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">Carbones del Cerrejón Limited. (2024). <em>Informe de Sostenibilidad 2024</em>.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">Domínguez, M. F. (2022). <em>302427742_Informe de sostenibilidad</em> [OVA]. UNAD.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">OCDE. (2020). <em>OECD iLibrary</em>. <a href="https://www.oecd.org/centrodemexico/publicaciones/" target="_blank" style="color:var(--naranja-claro);">Enlace</a></li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">OCDE. (2026). <em>OECD Environmental Performance Reviews: Colombia 2026</em>.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">OCDE. (2026). <em>OECD Responsible Business Outlook 2026</em>.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">Panceri, J. (2021). <em>Sustentabilidad: economía, desarrollo sustentable y medioambiente</em>. Biblos.</li>
+            <li style="break-inside:avoid; margin-bottom:0.3rem;">Pinilla, P. (2013). Informe de gestión sostenible de la industria del seguro en Colombia. <em>Fasecolda</em>.</li>
+        </ul>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <div class="footer-dark">
+        <div>
+            <i class="fas fa-users" style="color:var(--naranja);"></i> Brochure interactivo · UNAD · ECAPMA · 2026
+        </div>
+        <div>
+            <span><a href="https://emmacias100318-lgtm.github.io/CERREJON/" target="_blank" style="color:var(--naranja-claro);">Ver en línea</a></span>
+        </div>
+    </div>
+
+</div>
+<!-- end dashboard -->
+
+<script>
+    // Tabs
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            const target = document.getElementById(this.dataset.tab);
+            if (target) target.classList.add('active');
+        });
+    });
+
+    // Animación de contadores
+    const counters = [
+        { id: 'counter1', target: 13.8, decimals: 1 },
+        { id: 'counter2', target: 3.7, decimals: 1 },
+        { id: 'counter3', target: 5.2, decimals: 1 },
+        { id: 'counter4', target: 895, decimals: 0 },
+        { id: 'counter5', target: 333, decimals: 0 }
+    ];
+    let animationStarted = false;
+
+    function animateCounters() {
+        if (animationStarted) return;
+        animationStarted = true;
+        counters.forEach(item => {
+            const el = document.getElementById(item.id);
+            if (!el) return;
+            const target = item.target;
+            const decimals = item.decimals;
+            const duration = 1500;
+            const startTime = performance.now();
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const currentValue = eased * target;
+                el.textContent = currentValue.toFixed(decimals);
+                if (progress < 1) requestAnimationFrame(updateCounter);
+                else el.textContent = target.toFixed(decimals);
+            }
+            requestAnimationFrame(updateCounter);
+        });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animationStarted) animateCounters();
+        });
+    }, { threshold: 0.3 });
+    const dashboard = document.querySelector('.dashboard');
+    if (dashboard) observer.observe(dashboard);
+
+    if (!animationStarted) {
+        setTimeout(() => {
+            const rect = dashboard.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.8) animateCounters();
+        }, 400);
+    }
+    window.addEventListener('scroll', function() {
+        if (!animationStarted) {
+            const rect = dashboard.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.8) animateCounters();
+        }
+    });
+</script>
+</body>
+</html>
